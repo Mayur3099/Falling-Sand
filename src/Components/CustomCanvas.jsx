@@ -28,21 +28,15 @@ const CustomCanvas = () => {
       return;
     }
 
-    // Original
     let tempGrid = grid.map((row, indexX) => {
       return row.map((value, indexY) => { return value; })
     });
 
     let updated = 0;
 
-    console.log('Inside useefect')
-
     for (let i = 0; i < width; i++) {
       for (let j = 0; j < width; j++) {
         if (i < width - 1 && grid[i][j] !== 0) {
-          console.log('Found non zero')
-          console.log(tempGrid[i][j])
-
           if ((i < width - 1) && (grid[i + 1][j] === 0)) {
             tempGrid[i + 1][j] = tempGrid[i][j];
             tempGrid[i][j] = 0;
@@ -84,19 +78,14 @@ const CustomCanvas = () => {
     }
 
     if (updated === 1)
-      setGrid(tempGrid);
-
-    // if (updated === 1) {
-    //   setTimeout(() => {
-    //     console.log('Timeout')
-    //     setGrid(tempGrid);
-    //   }, 0.001);
-    // }
+      setTimeout(() => {
+        setGrid(tempGrid);
+      }, 5);
 
   }, [grid])
 
   const handleClick = (e) => {
-    console.log('Clicked: ', 'x:', e.target.attributes.coordinateX.value, ' y:', e.target.attributes.coordinateY.value);
+    // console.log('Clicked: ', 'x:', e.target.attributes.coordinateX.value, ' y:', e.target.attributes.coordinateY.value);
 
     if (grid[e.target.attributes.coordinateX.value][e.target.attributes.coordinateY.value] !== 0) return;
 
@@ -105,8 +94,6 @@ const CustomCanvas = () => {
     const tempGrid = grid.map((row, indexX) => {
       return row.map((value, indexY) => {
         if (indexX == e.target.attributes.coordinateX.value && indexY == e.target.attributes.coordinateY.value) {
-          console.log('Mila: ', value);
-
           if (value !== 0) {
             return value;
           }

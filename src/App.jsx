@@ -12,7 +12,7 @@ function App() {
         className='flex flex-col justify-center items-center p-4 bg-slate-800 min-h-screen'
       >
         <div className='font-bold font-sans text-teal-700 text-5xl mt-6 mb-8'>
-          Dropping Sand
+          Falling Sand
         </div>
         <CustomCanvas />
       </div>
